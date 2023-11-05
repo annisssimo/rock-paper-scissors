@@ -17,16 +17,13 @@ Set playerSelection value to the inputted string
 
 Declare a function playRound (playerSelection, computerSelection)
 
-    case ((playerSelection = ‘rock’ and computerSelection = ‘rock’)
-    OR (playerSelection = ‘paper’ and computerSelection = ‘paper’)
-    OR (playerSelection = ‘scissors’ and computerSelection = ‘scissors’)) return a string "noone the winner"
+    case (playerSelection = computerSelection)
+    return a string "no one is the winner"
 
     case ((playerSelection = ‘rock’ and computerSelection = ‘paper’)
     OR (playerSelection = ‘paper’ and computerSelection = ‘scissors’)
     OR (playerSelection = ‘scissors’ and computerSelection = ‘rock’)) return a string "computer is the winner"
 
-    case ((playerSelection = ‘paper’ and computerSelection = ‘rock’)
-    OR (playerSelection = ‘scissors’ and computerSelection = ‘paper’)
-    OR (playerSelection = ‘rock’ and computerSelection = ‘scissors’)) return a string "player is the winner"
+    default return a string "player is the winner"
 
 return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
