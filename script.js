@@ -35,7 +35,7 @@ function playRound (playerSelection, computerSelection) {
 } 
 
 const computerSelection = getComputerChoice();
-let playerSelection = prompt ('Rock, paper or scissors?');
+let playerSelection = prompt('Rock, paper or scissors?');
 
-alert(playRound(playerSelection, computerSelection));
+alert(playRound(playerSelection.toLowerCase(), computerSelection));
 
