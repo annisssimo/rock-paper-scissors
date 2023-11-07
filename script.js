@@ -30,10 +30,10 @@ let playerSelection = String(prompt('Rock, paper or scissors?'));
 let result = playRound(playerSelection.toLowerCase(), computerSelection);
 console.log(`Round ${i+1}: ` + result);
 
-if(result = "You win!") {
+if(result === "You win!") {
     playerWins++;
 }
-else if (result = "Computer wins!") {
+else if (result === "Computer wins!") {
     computerWins++;
 }
 }
@@ -41,11 +41,14 @@ getGameResults(computerWins, playerWins);
 }
 
 function getGameResults(computerWins, playerWins) {
-    if (computerWins > playerWins) {
-        console.log("YOU ARE THE WINNER. CONGRATS!");
-    }
-    else if (computerWins < playerWins) {
-        console.log("Computer win the game :(");
+    console.log(`Player wins: ${playerWins}`);
+    console.log(`Computer wins: ${computerWins}`);
+    if (playerWins > computerWins) {
+        console.log('You win the game!');
+    } else if (computerWins > playerWins) {
+        console.log('Computer wins the game!');
+    } else {
+        console.log("It's a tie!");
     }
 }
 
