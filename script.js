@@ -1,45 +1,52 @@
 function getComputerChoice () {
-    let rock = 'rock';
-    let paper = 'paper';
-    let scissors = 'scissors';
-
+    let computerChoices = ['rock', 'paper', 'scissors'];
     let randomNumber = Math.floor(Math.random()*3);
-
-    switch (randomNumber) {
-        case 0: return 'rock';
-        break;
-        case 1: return 'paper';
-        break;
-        case 2: return 'scissors';
-    }
+    return computerChoices[randomNumber];
 }
 
 function playRound (playerSelection, computerSelection) {
-    switch (true) {
-    case (playerSelection === computerSelection):
-    return "no one is the winner";
-    break;
-    case (playerSelection === 'rock' && computerSelection === 'paper'):
-    case (playerSelection === 'paper' && computerSelection === 'scissors'):
-    case (playerSelection === 'scissors' && computerSelection === 'rock'):
-    return "computer is the winner";
-    break;
-    case (playerSelection === 'paper' && computerSelection === 'rock'):
-    case (playerSelection === 'scissors' && computerSelection === 'paper'):
-    case (playerSelection === 'rock' && computerSelection === 'scissors'):
-    return "yessss! you are lucky dude";
-    break;
-        default:
-            return "oops. reload the page and try again...";
-}
+    if (playerSelection === computerSelection) {
+        return "It's a tie";
+    }
+    else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+        ) {
+            return "You win!"
+        }
+    else {
+        return "Computer wins!";
+    }
+
 } 
 
 function game () {
+let playerWins = 0;
+let computerWins = 0;
 for (let i = 0; i < 5; i++) {
 let computerSelection = getComputerChoice();
 let playerSelection = String(prompt('Rock, paper or scissors?'));
-alert(playRound(playerSelection.toLowerCase(), computerSelection));
+let result = playRound(playerSelection.toLowerCase(), computerSelection);
+console.log(`Round ${i+1}: ` + result);
+
+if(result = "You win!") {
+    playerWins++;
 }
+else if (result = "Computer wins!") {
+    computerWins++;
+}
+}
+getGameResults(computerWins, playerWins);
+}
+
+function getGameResults(computerWins, playerWins) {
+    if (computerWins > playerWins) {
+        console.log("YOU ARE THE WINNER. CONGRATS!");
+    }
+    else if (computerWins < playerWins) {
+        console.log("Computer win the game :(");
+    }
 }
 
 game();

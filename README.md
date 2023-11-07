@@ -1,7 +1,7 @@
 **Pseudocode**
 Declare a function getComputerChoice, that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
 
-Initialize 3 variables and set their values ‘Rock’, ‘Paper’, ‘Scissors’
+Initialize 3 variables and set their values to ‘Rock’, ‘Paper’, ‘Scissors’
 
 Generate random number between 0 and 2
 
