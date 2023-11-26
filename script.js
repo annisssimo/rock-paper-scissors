@@ -1,6 +1,5 @@
 let playerScore = 0;
 let computerScore = 0;
-let roundCount = 0;
 
 function getComputerChoice() {
     const computerChoices = ['rock', 'paper', 'scissors'];
@@ -9,6 +8,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+
     if (playerSelection === computerSelection) {
         return "It's a tie";
     } else if (
@@ -28,36 +28,50 @@ function updateScore(result) {
     } else if (result.includes("Computer wins")) {
         computerScore++;
     }
-}
+    winnerAnnouncement.textContent = result;
+    playerScoreSign.textContent = `Player: ${playerScore}`;
+    computerScoreSign.textContent = `Computer: ${computerScore}`;
 
-function updateRoundCount() {
-    roundCount++;
-    if (roundCount === 5) {
-        endGame();
+    if (playerScore === 5 || computerScore === 5) {
+        setTimeout(() => {
+            endGame();
+        }, 0);
     }
 }
 
 function endGame() {
-
     console.log("Game over!");
     console.log(`Player Score: ${playerScore}`);
     console.log(`Computer Score: ${computerScore}`);
 
     if (playerScore > computerScore) {
-        console.log("Congratulations! You win the game!");
+        alert("Congratulations! You win the game!");
     } else if (playerScore < computerScore) {
-        console.log("Oops! Computer wins the game!");
+        alert("Oops! Computer wins the game!");
     } else {
-        console.log("It's a tie game!");
+        alert("It's a tie game!");
     }
+
+    restartGame();
 }
 
 function handleClick(playerSelection) {
     const computerSelection = getComputerChoice();
+    playerSign.textContent = playerSelection;
+    computerSign.textContent = computerSelection;
     const result = playRound(playerSelection, computerSelection);
     console.log(result);
     updateScore(result);
-    updateRoundCount();
+}
+
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreSign.textContent = 'Player: 0'
+    computerScoreSign.textContent = 'Computer: 0'
+    playerSign.textContent = '❔'
+    computerSign.textContent = '❔'
+    winnerAnnouncement.textContent = 'Choose your weapon';
 }
 
 const rockBtn = document.querySelector('#rock');
@@ -68,3 +82,13 @@ paperBtn.addEventListener('click', () => handleClick('paper'));
 
 const scissorsBtn = document.querySelector('#scissors');
 scissorsBtn.addEventListener('click', () => handleClick('scissors'));
+
+const restartBtn = document.querySelector('#restart');
+restartBtn.addEventListener('click', () => restartGame());
+
+
+const playerSign = document.querySelector('#player-sign');
+const computerSign = document.querySelector('#computer-sign');
+const playerScoreSign = document.querySelector('#player-score');
+const computerScoreSign = document.querySelector('#computer-score');
+const winnerAnnouncement = document.querySelector('#winner');

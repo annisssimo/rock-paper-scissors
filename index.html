@@ -14,7 +14,7 @@
 <main class="main">
 
     <div class="scoreboard">
-        <h2>Choose your weapon</h2>
+        <h2 id="winner">Choose your weapon</h2>
         <h3>First to score 5 points wins the game</h3>
     </div>
 
@@ -22,12 +22,12 @@
 
         <div class="score-box">
             <div class="sign" id="player-sign">❔</div>
-            <div class="score">Player: 0</div>
+            <div class="score" id="player-score">Player: 0</div>
         </div>
 
         <div class="score-box">
             <div class="sign" id="computer-sign">❔</div>
-            <div class="score">Computer: 0</div>
+            <div class="score" id="computer-score">Computer: 0</div>
         </div>
 
     </div>
@@ -36,6 +36,10 @@
         <button id="rock">🪨</button>
         <button id="paper">📄</button>
         <button id="scissors">✂️</button>
+    </div>
+
+    <div class="restart">
+        <button class="restart-button" id="restart">Restart</button>
     </div>
 
 </main>
