@@ -38,6 +38,7 @@ function updateRoundCount() {
 }
 
 function endGame() {
+
     console.log("Game over!");
     console.log(`Player Score: ${playerScore}`);
     console.log(`Computer Score: ${computerScore}`);
@@ -54,7 +55,6 @@ function endGame() {
 function handleClick(playerSelection) {
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
-
     console.log(result);
     updateScore(result);
     updateRoundCount();
